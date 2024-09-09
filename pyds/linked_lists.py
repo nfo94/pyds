@@ -32,7 +32,7 @@ class LinkedList:
         nodes, allways assigning the next node to the temporary variable
         """
         temp = self.head
-        # None is the last next (end of the linked list)
+        # None is the "last next" (end of the linked list)
         while temp is not None:
             print(temp.value)
             temp = temp.next
