@@ -38,7 +38,12 @@ class LinkedList:
             temp = temp.next
 
     def append(self, value):
-        """ """
+        """
+        To append a new node we need to create a new node with the received
+        value and check if it's the first node. If yes, assign it to the head
+        and tail. If not, assign it to next using tail, which is the last node.
+        Finally, increment the length of the linked list
+        """
         new_node = Node(value)
         if self.length == 0:
             self.head = new_node
@@ -50,19 +55,30 @@ class LinkedList:
         return True
 
     def pop(self):
+        # First we need to check if the linked list is empty
         if self.length == 0:
             return None
+        # If not, we'll start from the beginning of the list (head) and iterate
         temp = self.head
+        # This variable will be used to keep track of the previous node
         pre = self.head
+        # While there's still a value (not None) we'll keep iterating
         while temp.next:
             pre = temp
             temp = temp.next
+        # The tail is the previous node since temp.next reached None
         self.tail = pre
+        # Last node points to None
         self.tail.next = None
+        # New length since we'll remove the last node (length - 1)
         self.length -= 1
+        # If subtracting the length makes it 0, we need to set head and tail to
+        # None, since there's no nodes left
         if self.length == 0:
             self.head = None
             self.tail = None
+        # Return the removed node. temp was removed since tail.next now points
+        # to None
         return temp
 
     def prepend(self, value):
