@@ -79,26 +79,46 @@ class LinkedList:
             self.tail = None
         # Return the removed node. temp was removed since tail.next now points
         # to None
-        return temp
+        return temp.value
 
     def prepend(self, value):
+        # We'll add a new node to the beginning of the linked list
         new_node = Node(value)
+        # Before doing anything with the new node, first check if the linked
+        # list is empty
         if self.length == 0:
+            # If it's empty then assign the new node to head and tail
             self.head = new_node
             self.tail = new_node
+        # If it's not empty, we'll assign the current head of the linked list
+        # to new_node.next, to make the new node point to the correct next node
         else:
             new_node.next = self.head
+            # Now assign the new node as the new head of the linked list
             self.head = new_node
+        # Finally, increment the length of the linked list
         self.length += 1
         return True
 
     def pop_first(self):
+        # First, check if the linked list is empty
         if self.length == 0:
+            # If it is, return None, since we can't pop anything
             return None
+        # Assign the head to a temporary variable
         temp = self.head
+        # Assign head.next as the new head, since we want to pop the first node
         self.head = self.head.next
+        # Now assign None to temp.next, since it won't point to anything
         temp.next = None
+        # Decrement the length of the linked list, since we popped the first
+        # node
         self.length -= 1
+        # If after the decrement the length is 0, meaning, the linked list now
+        # is empty and before it had only one node and we popped it, we need to
+        # set the tail to None. We don't need to set the head to None since we
+        # already did that in line 111 (in the case that the linked list had
+        # one node)
         if self.length == 0:
             self.tail = None
         return temp
@@ -113,9 +133,13 @@ class LinkedList:
         return temp.value
 
 
-my_linked_list = LinkedList(0)
-my_linked_list.append(1)
-my_linked_list.append(2)
-
+my_linked_list = LinkedList("value")
+# my_linked_list.append(1)
+# my_linked_list.append(2)
+# my_linked_list.pop()
+# my_linked_list.prepend(3)
 my_linked_list.print_list()
-print(my_linked_list.print_list())
+print(my_linked_list.length)
+my_linked_list.pop_first()
+my_linked_list.print_list()
+print(my_linked_list.length)
