@@ -121,7 +121,7 @@ class LinkedList:
         # one node)
         if self.length == 0:
             self.tail = None
-        return temp
+        return temp.value
 
     def get(self, index):
         if index < 0 or index >= self.length:
