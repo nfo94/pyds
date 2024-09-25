@@ -79,7 +79,7 @@ class LinkedList:
             self.tail = None
         # Return the removed node. temp was removed since tail.next now points
         # to None
-        return temp.value
+        return temp
 
     def prepend(self, value):
         # We'll add a new node to the beginning of the linked list
@@ -121,10 +121,11 @@ class LinkedList:
         # one node)
         if self.length == 0:
             self.tail = None
-        return temp.value
+        return temp
 
     def get(self, index):
-        # Prevent the index from being out of range
+        # Prevent the index from being out of range. It cannot be equal to self.length
+        # because the next item is None
         if index < 0 or index >= self.length:
             return None
         temp = self.head
@@ -132,7 +133,7 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         # Return the value of the node at the given index
-        return temp.value
+        return temp
 
     def set_value(self, index, value):
         # Get the value in the provided index
@@ -142,16 +143,58 @@ class LinkedList:
             return False
         # Otherwise save the received value
         temp.value = value
-        return temp.value
+        return temp
+
+    def insert(self, index, value):
+        # First, check if index is out of range. In this case don't need to check
+        # index >= self.length because the index can be equal to last item
+        if index < 0 or index > self.length:
+            return False
+        # If the index is the beginning of the list, prepend
+        if index == 0:
+            return self.prepend(value)
+        # If the index is the ending of the list, append
+        if index == self.length:
+            return self.append(value)
+
+        # Create new node
+        new_node = Node(value)
+        # Grab the previous node to the index that we want to add
+        temp = self.get(index - 1)
+        # The next of the node is the old next of the old node
+        new_node.next = temp.next
+        # The next of the previous node is now the new node
+        temp.next = new_node
+        # Update the length of the list
+        self.length += 1
+        return True
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+
+        prev = self.get(index - 1)
+        # temp = self.get(index)
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
 
 
-my_linked_list = LinkedList(0)
-my_linked_list.append(1)
-my_linked_list.append(2)
-my_linked_list.append(3)
-my_linked_list.append(4)
-my_linked_list.append(5)
-print(my_linked_list.get(3))
+my_linked_list = LinkedList(22)
+my_linked_list.append(23)
+my_linked_list.append(19)
+my_linked_list.insert(2, 78)
+my_linked_list.print_list()
+print("----")
+my_linked_list.remove(2)
+my_linked_list.print_list()
+# my_linked_list.get()
 # my_linked_list.pop()
 # my_linked_list.prepend(3)
 # my_linked_list.print_list()
