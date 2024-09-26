@@ -170,18 +170,29 @@ class LinkedList:
         return True
 
     def remove(self, index):
+        # First, check if index is out of range. If the index its equal to the length
+        # it means that we already passed the last item (indexes start at 0 and
+        # length starts at 1)
         if index < 0 or index >= self.length:
             return None
+        # If index is zero then is the first item
         if index == 0:
             return self.pop_first()
+        # If index is the last item
         if index == self.length - 1:
             return self.pop()
 
+        # We need the previous node from what we want to remove
         prev = self.get(index - 1)
+        # We could do this:
         # temp = self.get(index)
+        # but we can just use what we already have:
         temp = prev.next
+        # The old next is now the next of the node before the one we'll remove
         prev.next = temp.next
+        # The node being removed now points to nothing
         temp.next = None
+        # Decrease the length
         self.length -= 1
         return temp
 
@@ -192,7 +203,7 @@ my_linked_list.append(19)
 my_linked_list.insert(2, 78)
 my_linked_list.print_list()
 print("----")
-my_linked_list.remove(2)
+my_linked_list.remove(4)
 my_linked_list.print_list()
 # my_linked_list.get()
 # my_linked_list.pop()
