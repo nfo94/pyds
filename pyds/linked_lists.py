@@ -146,8 +146,8 @@ class LinkedList:
         return temp
 
     def insert(self, index, value):
-        # First, check if index is out of range. In this case don't need to check
-        # index >= self.length because the index can be equal to last item
+        # First, check if index is out of range. In this case don't need to
+        # check index >= self.length because the index can be equal to last item
         if index < 0 or index > self.length:
             return False
         # If the index is the beginning of the list, prepend
