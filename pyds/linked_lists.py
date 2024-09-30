@@ -124,8 +124,8 @@ class LinkedList:
         return temp
 
     def get(self, index):
-        # Prevent the index from being out of range. It cannot be equal to self.length
-        # because the next item is None
+        # Prevent the index from being out of range. It cannot be equal to
+        # self.length because the next item is None
         if index < 0 or index >= self.length:
             return None
         temp = self.head
@@ -170,9 +170,9 @@ class LinkedList:
         return True
 
     def remove(self, index):
-        # First, check if index is out of range. If the index its equal to the length
-        # it means that we already passed the last item (indexes start at 0 and
-        # length starts at 1)
+        # First, check if index is out of range. If the index its equal to the
+        # length it means that we already passed the last item (indexes start at
+        # 0 and length starts at 1)
         if index < 0 or index >= self.length:
             return None
         # If index is zero then is the first item
@@ -196,14 +196,36 @@ class LinkedList:
         self.length -= 1
         return temp
 
+    def reverse(self):
+        # Temp is the head
+        temp = self.head
+        # The head now is the tail
+        self.head = self.tail
+        # Temp now is the tail
+        self.tail = temp
+        # The above makes a switch between head and tail using the temp var
+
+        after = temp.next
+        before = None
+        # Sequence of before, temp, after to loop through from beginning to end
+        for _ in range(self.length):
+            # temp.next is the new after
+            after = temp.next
+            # the node before is the new temp.next
+            temp.next = before
+            # temp now is the node before, since we're looping through
+            before = temp
+            # the node after is now the current temp and will continue the loop
+            temp = after
+
 
 my_linked_list = LinkedList(22)
 my_linked_list.append(23)
 my_linked_list.append(19)
 my_linked_list.insert(2, 78)
 my_linked_list.print_list()
+my_linked_list.reverse()
 print("----")
-my_linked_list.remove(4)
 my_linked_list.print_list()
 # my_linked_list.get()
 # my_linked_list.pop()
