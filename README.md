@@ -1,5 +1,6 @@
 ### Data structures & Algorithms with Python
 
-This is a study repository for the course [Python Data Structures & Algorithms +
-LEETCODE Exercises](https://www.udemy.com/course/data-structures-algorithms-python)
-from Scott Barrett. I heavily recommend this course.
+This is a study repository for data structures and algorithms using Python. I'm using the
+course [Python Data Structures & Algorithms + LEETCODE Exercises](https://www.udemy.com/course/data-structures-algorithms-python)
+from Scott Barrett, and [Hands-On Data Structures and Algorithms with Python](https://www.amazon.com.br/Hands-Data-Structures-Algorithms-Python-ebook/dp/B09RZYP5HJ/ref=sr_1_1?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1H1KT1C03DMOI&dib=eyJ2IjoiMSJ9.7FTT54zvvxAMMBovqgFcCu6lPMtZcDvKeflPD8RjqJVD5qXDx52jIo480H32Yv-L1vpSd8Ko-loZFLs66DRLnv6WPgJeLIaNcrwq90_kv7XUeuHyZ0ece7pD374huF15GfzoVlUGs9OpkDfbz1CaPZ24UPKGuV9ww2Vi4clG_jZAqyqnnbCO4qXwUCNa2aoQ44HFATHe9Gr6mzrrVdPEQIOnVH7HQ2Qkvy2mtDRY_26eJARhGsUpI4pVGifyXLPazD3NHKzm3Gkz0yn7FxqVW6p9otS1ftTxeoeL9DPXuusZFVpHDzt-y27h8PKfGJX0MUqzj5hmBV09CSbAAatFw_sx-USMaYqXAjr4RLdZBpZdYdZGsCmJGwcgB4uUi-8DQ08tgrGIo0V9YEKyuLxS_60O2FSHVkIOcpivFHa1DH1KPgy42MaPqVdsnWtPX76Y.ejT9Yy40iSYxFTS9MnfNmvSE-o9dK8M3ozz92N-exMc&dib_tag=se&keywords=Hands-On+Data+Structures+and+Algorithms+with+Python&qid=1736543178&sprefix=hands-on+data+structures+and+algorithms+with+python%2Caps%2C167&sr=8-1)
+from Basant Agarwal.
