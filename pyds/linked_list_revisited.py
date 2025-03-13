@@ -126,7 +126,7 @@ class LinkedList:
             node.value = value
             return
 
-    def insert_node(self, index, value):
+    def insert_node_by_index(self, index, value):
         if not isinstance(index, int) or index < 0 or index > self.length:
             logger.info(" Provide a positive integer starting from 0.")
             return
@@ -143,12 +143,11 @@ class LinkedList:
 
         new_node = Node(value)
         # Empty case
-        # Already treated in prepend_node
-        # if self.length == 0:
-        #     self.head = new_node
-        #     self.tail = new_node
-        #     self.length += 1
-        #     return
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+            return
 
         # More nodes case
         current_node = self.head
@@ -160,7 +159,7 @@ class LinkedList:
         new_node.next = current_node
         self.length += 1
 
-    def remove_node(self, index):
+    def remove_node_by_index(self, index):
         if not isinstance(index, int) or index < 0 or index >= self.length:
             logger.info(" Provide a positive integer starting from 0.")
             return
@@ -201,5 +200,5 @@ test.append_node(4)
 test.append_node(3)
 test.append_node(2)
 test.log_list()
-test.remove_node(2)
+test.remove_node_by_index(2)
 test.log_list()
