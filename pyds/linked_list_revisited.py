@@ -47,7 +47,7 @@ class LinkedList:
         # Update length
         self.length += 1
 
-    def pop_node(self):
+    def pop_last_node(self):
         # Empty case
         if self.length == 0:
             return
@@ -156,10 +156,45 @@ class LinkedList:
         previous_node.next = new_node
         new_node.next = current_node
 
+    def remove_node(self, index):
+        if not isinstance(index, int) or index < 0 or index >= self.length:
+            logger.info(" Provide a positive integer starting from 0.")
+            return
+
+        # Empty case. Doesn't matter the index
+        if self.length == 0:
+            return
+
+        # If index is zero it means we want to pop the first node
+        if index == 0:
+            self.pop_first_node()
+            return
+
+        if index == self.length - 1:
+            self.pop_last_node()
+            return
+
+        # More nodes case
+        # current_node = self.head
+        # previous_node = self.head
+        # for _ in range(index):
+        #     previous_node = current_node
+        #     current_node = current_node.next
+
+        # previous_node.next = current_node.next
+        # current_node.next = None
+
+        # Using get_node_by_index
+        previous_node = self.get_node_by_index(index - 1)
+        node_to_remove = previous_node.next
+        previous_node.next = node_to_remove.next
+        node_to_remove.next = None
+
 
 test = LinkedList(5)
 test.append_node(4)
 test.append_node(3)
 test.append_node(2)
-test.insert_node(2, 1)
+test.log_list()
+test.remove_node(2)
 test.log_list()
