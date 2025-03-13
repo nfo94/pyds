@@ -38,6 +38,7 @@ class LinkedList:
         if self.length == 0:
             self.head = new_node
             self.tail = new_node
+            self.length += 1
             return
 
         # Not empty case
@@ -142,10 +143,12 @@ class LinkedList:
 
         new_node = Node(value)
         # Empty case
-        if self.length == 0:
-            self.head = new_node
-            self.tail = new_node
-            return
+        # Already treated in prepend_node
+        # if self.length == 0:
+        #     self.head = new_node
+        #     self.tail = new_node
+        #     self.length += 1
+        #     return
 
         # More nodes case
         current_node = self.head
@@ -155,6 +158,7 @@ class LinkedList:
             current_node = current_node.next
         previous_node.next = new_node
         new_node.next = current_node
+        self.length += 1
 
     def remove_node(self, index):
         if not isinstance(index, int) or index < 0 or index >= self.length:
@@ -189,6 +193,7 @@ class LinkedList:
         node_to_remove = previous_node.next
         previous_node.next = node_to_remove.next
         node_to_remove.next = None
+        self.length -= 1
 
 
 test = LinkedList(5)
