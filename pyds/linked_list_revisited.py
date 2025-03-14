@@ -194,11 +194,32 @@ class LinkedList:
         node_to_remove.next = None
         self.length -= 1
 
+    def reverse(self):
+        if self.length == 0 or self.length == 1:
+            return
+
+        # We can change these items without messing up with anything else
+        current_node = self.head
+        self.head = self.tail
+        self.tail = current_node
+
+        # This is tricky to reason!
+        after_node = current_node.next
+        previous_node = None
+        for _ in range(self.length):
+            # First, move the after node since any change would mess up the location
+            after_node = current_node.next
+            # Reversing
+            current_node.next = previous_node
+            # Moving the loop
+            previous_node = current_node
+            current_node = after_node
+
 
 test = LinkedList(5)
 test.append_node(4)
 test.append_node(3)
 test.append_node(2)
 test.log_list()
-test.remove_node_by_index(2)
+test.reverse()
 test.log_list()
